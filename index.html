@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta >
+	<title>this is the texting</title>
+</head>
+<body ng-app="myapp">
+	<style type="text/css">
+		.picC{
+			width: 90%;
+			margin: 50px auto;
+			-webkit-columns: 5;
+			 -webkit-column-gap: 20px;  
+			 list-style-type: none;
+		}
+
+		input.ng-invaild {
+			color: red;
+		}
+
+		input.ng-invalid{
+			background-color: lightblue;
+		}
+	</style>
+	this is flex box
+	an angular module define a application
+	an ng-bind is for data to view
+	an ng-init
+	ng-model is bind input textare or select to data model
+	app.directive [restrict: 'A' 'M' 'C']
+
+	app.controller  ng-controller
+	ng-model 这里有验证，有ng-empty, ng-not-empty, ng-touched, ng-untouched, ng-vaild, ng-invaild, ng-dirty, ng-pending, ng-pristine
+	angular controller : angular controller control the data of angularjs application ;angularjs control are regular javascript objects;
+	in large application, controller sotre in external file.
+	angularjs scope is the binding part between the html(view) and the javascript(controller)
+	the scope is an object with the available proprity and method, the scope is available for both the  view and the controller
+	angular js filter
+	currency, date, filter, json, limitTo, lowercase, nummber, orderBy, uppercase
+	the currency filter formats a number to a currency format
+	it's very important : filter
+	filter: text // notice: without quote
+	ng-click to resort the order
+
+	XMLHttpRequest cannot load http://placehold.it/200x200. No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access.
+	<ol class="picC">
+		<li><img src="http://placehold.it/200x200" style="color:lightyellow"></li>
+		<li><img src="http://placehold.it/200x200" style="color:lightyellow"></li>
+		<li><img src="http://placehold.it/200x200" style="color:lightyellow"></li>
+		<li><img src="http://placehold.it/200x200" style="color:lightyellow"></li>
+		<li><img src="http://placehold.it/200x200" style="color:lightyellow"></li>
+	</ol>
+	<div ng-init="qunatity=14;cost=100">
+		
+		{{qunatity * cost}}
+	</div>
+	<div ng-controller="myctrl">
+		firstname: <input type="text" ng-model="firstname" >
+		lastname: <input type="text" ng-model="lastname" ><br/>
+		fullname: {{firstname + lastname}}
+	</div>
+	<div ng-init="person={firstname: 'chinanew town',lastname: 'american newtown'}">
+		{{person.firstname + person.lastname}}
+		<span style="color:red" ng-bind="person.firstname"></span>
+	</div>
+	<div ng-init="points=[1,2,34,434,55,53]">
+		<div type="text" ng-bind="points"></div>
+	</div>
+	<div ng-controller="xx">
+		<input type="text" ng-model="name1">
+		{{name1}}
+	</div>
+	<div>
+		<form name="myform">
+			<input type="email" name="myAddress" ng-model="email">
+			<span ng-show="myform.myAddress.$error.email">not a vaild email address</span>
+		</form>
+	</div>
+
+	<form ng-app="" name="myform" ng-init="mytext='post@myweb.com'">
+		Email: 
+		<input type="email" name="myaddress" ng-model="mytext" required>
+		<h1>staus</h1>
+		{{myform.myaddress.$valid}}
+		{{myfrom.myaddress.$dirty}}
+		{{myform.myaddress.$touched}}
+	</form>
+	<!-- directive:liduanjie -->
+	<form ng-app="" name="myform">
+		enter your name:<input href="input" name="myAddress" ng-model="text" required>
+	</form>
+	<div ng-app="" ng-controller="set">
+		<input type="text" ng-model="firstname">
+		<input type="text" ng-model="lastname">
+		{{fullname() | lowercase}} {{color}}
+	</div>
+
+	<ul ng-controller="repeat1">
+		<input type="text" ng-model="text">
+		<li ng-repeat="x in names | filter:text">{{x.name + x.country}}</li>
+	</ul>
+	<div ng-controller="li">
+		{{currency | currency}}
+	</div>
+
+	<div ng-app="">
+		<div ng-controller="namesCtrl">	
+			<table border="1" width="100%">
+				<tr style="cursor:pointer">
+					<th ng-click="orderByMe('name')">Name</th>
+					<th ng-click="orderByMe('country')">country</th>
+				</tr>
+				<tr ng-repeat="x in names | orderBy: myOrderBy">
+					<td>{{x.name}}</td>
+					<td>{{x.country}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div ng-controller="ctrl2"></div>
+	<div ng-controller="ctrl3">
+		{{mywelcome}}
+	</div>
+	<div ng-controller="ctrl4">
+		
+		{{myheader}}
+	</div>
+
+	<div ng-controller="ctrl5">
+		{{theTime}}
+	</div>
+	<div ng-controller="ctrl6">
+		{{hex}}
+	</div>
+
+	<div ng-controller="liduanjie">
+		<!-- <button type="button" ng-click="filt('country')">filter</button> -->
+		<input type="text" ng-model="filter1">
+		<li ng-repeat="x in information | filter: filter1">
+			{{x}}
+		</li>
+	</div>
+	<!-- <div ng-controller="anotherctrl">
+		<div ng-repeat="x in mydata"> 
+			{{x.City}} {{x.Country}}
+		</div>
+	</div> -->
+
+	<div ng-controller="anoctrl">
+		{{mydata}}
+		<div ng-repeat="x in mydata">
+			{{x.name}}
+		</div>
+	</div>
+
+
+	<script type="text/javascript" data-main="js/app/main.js" src="js/require.js"></script>
+</body>
+</html>

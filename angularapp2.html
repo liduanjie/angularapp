@@ -1,0 +1,194 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style type="text/css">	
+		.hover:hover {
+			
+			background-color: red;
+		}
+
+		input.ng-invalid{
+			background-color: red;
+		}
+		input.ng-valid{
+			background-color: lightgreen;
+		}
+
+		input.pristine {
+			background-color: purple;
+		}
+
+		input.ng-untouched{
+			background-color: yellow;
+		}
+
+		form.ng-pristine {
+			background-color: lightblue;
+			
+		}
+		form.ng-dirty {
+			background-color: pink;
+		}
+	</style>
+	<meta charset="UTF-8">
+	<title>this is texting angualr dom</title>
+</head>
+<body ng-app="myapp">
+	<div >
+		<p ng-init="switch=true">
+			<button type="button" ng-disabled="switch">cliick</button>
+		</p>
+		<input type="checkbox" ng-model="switch">
+	</div>
+	<div  ng-init="hour = 13">
+		<div ng-show="true">i'm show</div>
+		<div ng-show="false">i'm hide</div>
+		<p ng-show="hour > 15"> the hour > 2</p>
+	</div>
+	<!-- angular event -->
+	you can add angualrs event listener to your html elements by using one or more of these dective;
+	ng-blur
+	ng-change
+	ng-click
+	ng-copy
+	ng-cut
+	ng-disable
+	ng-focus
+	ng-keydown
+	ng-keypress
+	ng-keydown
+	ng-mousedown
+	ng-mouseleave
+	ng-mousemove
+	ng-mouseover
+	ng-mouseup
+	ng-paste
+
+	<div ng-controller="event1">
+		<button ng-click="myfun()">caret elememt</button>
+		<button ng-click="dec()">decreaemne</button>
+		<div > {{count}} </div>
+		<input ng-foucs='funx()'>
+	</div>
+
+	<div ng-controller="mycc" >
+		<button ng-click="myfun()">clickme!!</button>
+		<div ng-show="showme">
+			<h1>menu:</h1>
+			<div>pizza</div>
+			<div>pasta</div>
+			<div>pasce</div>
+			<div>pizza</div>
+		</div>
+	</div>
+
+
+	<div ng-controller="myccc">
+		<h1 ng-mouseover="myfunc1($event)" class="hover">mouse over there</h1>
+		<p>coordinates: {{x + ', ' + y}} </p>
+	</div>
+	<div ng-controller="liduanjie">
+		<input type="text" ng-keydown="xx($event)">
+		<p>
+			the word you enter is {{count}}
+		</p>
+	</div>
+
+	angular forms 	
+	<div>
+		<input type="text" ng-model="name">
+		{{name}}
+	</div>
+	<div>
+		<input type="checkbox" ng-model="switch">	
+		<p ng-show="switch">sifsiofss</p>
+	</div>
+	注意，如果下面有这个东西的话就不可以写ng-controller在form里面
+	<form >
+		<input type="radio" ng-model="myvar" value="dogs">dogs
+		<input type="radio" ng-model="myvar" value="cat">cat
+		<input type="radio" ng-model="myvar" value="tuts"> tuts
+	</form>
+	<div ng-switch="myvar">
+		<div ng-switch-when="dogs">dogs</div>
+		<div ng-switch-when="tuts">tuts</div>
+		<div ng-switch-when="cat">cat</div>
+	</div>
+	<div>
+		<form>
+			select a topic:
+			<select ng-model="myva1">
+				<option value=""></option>
+				<option value="dogs">dogs</option>
+				<option value="tuts">tuts</option>
+				<option value="cars">cars</option>
+			</select>
+		</form>
+		<div ng-switch="myva1">
+			<div ng-switch-when="dogs">this is matck dogs</div>
+			<div ng-switch-when="tuts">this is matck ttus</div>
+			<div ng-switch-when="cars">this is matck cars</div>
+		</div>
+	</div>
+	angularjs form validation 
+	form validation
+	angualrjs offers client-side validation angular js montiors the state of the  form and input field(input, textarea , select) and notify you the current state;
+	angular js also holds informatin whenever they have been touched , or modify, or not;
+	you can use standard html5 attribute to validate input, or you can make your own validation function <a href=""></a>
+	
+	<form name="myform">
+		<input type="text" name="myinput" ng-model="myinput" required>
+		{{myinput}}
+	</form>
+	<p>the input's valid state is </p>
+	<h1>{{myform.myinput.$valid}}</h1>
+	<div>
+		<form name="form1">
+			<input type="email" ng-model="email" name="email1">
+		</form>
+
+		{{form1.email1.$valid}}
+	</div>
+
+	<form name="myform">
+		<p>
+			name: 
+			<input type="text" name="myname" ng-model="myname" required>
+			{{myform.myname.$touched}}
+			<span ng-show="myform.myname.$touched && myform.myname.$invalid">the name is required</span>
+		</p>
+		<p>
+			address: 
+			<input type="text" name="myaddress" ng-model="myaddress" required>
+		</p>
+	</form>
+	<table  ng-controller="edittable">
+		<tr>
+			<th>edit</th>
+			<th>firstname</th>
+			<th>lastname</th>
+		</tr>
+		<tr ng-repeat="x in data">
+			<td>
+				<button type="button" ng-click="">{{x.edit}}</button>
+			</td>
+			<td>{{x.firstname}}</td>
+			<td>{{x.lastname}}</td>
+		</tr>
+	</table>
+	<form ng-show="hideform">
+		<h3 ng-show="edit">create New User:</h3>
+		<h3 ng-hide="edit">Edit User:</h3>
+		<label for="">firstname:</label>
+		<input type="text" ng-model="fname" ng-disabled="!edit" placeholder="firstname"><br/>
+
+		<label> lastname</label>
+		<input type="text" ng-model="lname" ng-disabled="!edit" placeholder="lastname"><br/>
+
+		<label> password:</label>
+		<input type="password" placeholder="password" ng-model="pass1"><br/>
+		labe
+	</form>
+	<script type="text/javascript" data-main="js/app/angularevent.js" src="js/require.js"></script>
+</body>
+</html>

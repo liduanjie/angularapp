@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this is a app for angular grid</title>
+	<style type="text/css">
+		div {
+			box-sizing: content-box;
+			-moz-box-sizing: content-box;
+		    --webkit-box-sizing: content-box;
+		}
+		.grid {
+			padding-left: 0px;
+		}
+		.grid > li {
+			width: 25%;
+			list-style: none;
+			float:left;
+			padding: 2px;
+		}
+		.grid > li > img {
+			max-width: 100%;
+		}
+	</style>
+</head>
+<body ng-app="angulargrid">
+	<div ng-controller="ctrl1">
+		<table>
+			<tr>
+				<th ng-repeat="x in data.sort" data-id="{{x.id}}" ng-model="sort1">{{x.name}}</th>
+			</tr>
+		</table>
+		<div>
+			<input type="checkbox">
+			包邮
+		</div>
+		<div>
+			<input type="checkbox">
+			新品
+		</div>	
+		<div>
+			天猫
+		</div>
+		<div>
+			<input type="checkbox" ng-click="profilter('isoversea')">
+			海外商品
+		</div>
+		<div>
+			<input type="checkbox" ng-click="profilter('secondhand')">
+			二手
+		</div>
+		<div>
+			<input type="checkbox" ng-click="profilter('garuteen')">
+			正品保障
+		</div>
+		<div>
+			<input type="checkbox" ng-click="profilter('transfertime')">
+			24小时发货
+		</div>
+		<div>
+			<input type="checkbox">
+			七天退货
+		</div>
+		<div>
+			<ul class="grid">
+				<li ng-repeat="pro in product ">
+					<img src="{{pro.img}}">
+					<p>
+						<span>{{pro.price}}</span>
+						<span>{{pro.buyer}}</span>
+					</p>
+					<p>{{pro.title}}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" data-main="js/app/angulargrid.js" src="js/require.js"></script>
+</body>
+</html>

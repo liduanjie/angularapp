@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this is angualrjs tables</title>
+	<meta viewport="device-width">
+	<style type="text/css" src="style/bootstrap.min.css"></style>
+	<style type="text/css">
+		/*table, th, td {
+			border: 1px solid grey;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+		table tr:nth-child(odd) {
+			background-color: #f1f1f1;
+		}
+		table tr:nth-child(even) {
+			background-color: #fff;
+		}*/
+	</style>
+</head>
+<body>
+	<div id="xxx">this is the texting example</div>
+	$even $odd
+	cross-site http requests 
+	request for dat form a different server(than the requesting page	)
+	<div ng-app="myapp">
+		<table ng-controller="angulartable" >
+			<tr style="cursor: pointer">
+				<th> {{$index + 1}} </th>
+				<th ng-click="sort1('name')"> sort by name</th>
+				<th ng-click="sort1('country')">sort by country</th>
+			</tr>
+			<!-- <tr ng-repeat="x in names">
+				<td> {{$index + 1}} </td>
+				<td>{{x.name | uppercase}} </td>
+				<td>{{x.country}}</td>
+			</tr> -->
+			<tr ng-repeat="x in names">
+				<td ng-if="$odd" style="background-color: #f1f1f1">
+					{{x.name}}
+				</td>
+				<td ng-if="$even"> {{x.name}} </td>
+				<td ng-if="$odd" style="background-color: #f1f1f1"> {{x.country}} </td>
+				<td ng-if="$even"> {{x.country}} </td>
+			</tr>
+		</table>
+			
+		<div ng-controller="selectctrl">
+			<select ng-model="selectname"  ng-options="x for x in names"></select>	
+			<div> {{selectname}} </div>
+		</div>
+		<div ng-controller="selectctrl">
+			<select ng-model="xx" >
+				<option value="{{x}}" ng-repeat="x in names"> {{x}} </option>
+			</select>
+			<div> {{xx}} </div>
+		</div>
+		<div ng-init="myswitch=true">
+			<p>
+				<button ng-disabled="myswitch" class="btn active">click me</button>
+			</p>
+			<input type="checkbox" ng-model="myswitch">
+			<p>
+				{{myswitch}}
+			</p>
+		</div>
+	</div>
+
+	angular dom
+	<div ng-controller="angulardom">
+		<div ng-init="switch=true"></div>
+		<p>
+			<button type="button" ng-disabled="switch"></button>
+		</p>
+		<input type="checkbox" ng-model="switch">
+	</div>
+	
+
+	<script type="text/javascript" data-main="js/app/angulartable.js" src="js/require.js"></script>
+</body>
+</html>
